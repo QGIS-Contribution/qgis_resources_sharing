@@ -1,0 +1,425 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Creating a repository" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://qgis-contribution.github.io/QGIS-ResourceSharing/authoring/creating-repository.html" />
+  <meta property="og:site_name" content="QGIS Resource Sharing" />
+  <meta property="og:description" content="Preparing the Repository: In order for the tools to parse the repository correctly, the repository must have a certain structure. This is what you need to do: Go to this page to get information abo..." />
+  <meta property="og:image" content="https://qgis-contribution.github.io/QGIS-ResourceSharing/_images/collection_preview.png" />
+  <meta property="og:image:alt" content="QGIS Resource Sharing" />
+  <meta name='twitter:card' content='summary_large_image'>
+<meta property="twitter:description" content="Download shared collections
+Search for published collections and install them for use with QGIS. Symbology (SVG, images, styles), Processing scripts, Processing models, R scripts and checklists are supported. There are several options for repositories: Github, Bitbucket, local file system and HTTP(S)." />
+<meta property="twitter:image" content="https://qgis-contribution.github.io/QGIS-ResourceSharing/_images/collection_preview.png" />
+<meta property="twitter:title" content="QGIS Resource Sharing" /><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Repository structure" href="repository-structure.html" /><link rel="prev" title="What to share" href="what-to-share.html" />
+
+    <link rel="shortcut icon" href="../_static/icon.png"/><meta name="generator" content="sphinx-4.1.2, furo 2021.07.31.beta41"/>
+        <title>Creating a repository - QGIS Resource Sharing 0.17.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=daa650a7760fac3eee23aa959745d2c866b74cb3" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=93475b62d1c3bc01323a0eefdc14a62d77b12690" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  body[data-theme="dark"] {
+    --color-code-background: #272822;
+  --color-code-foreground: #f8f8f2;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-code-background: #272822;
+  --color-code-foreground: #f8f8f2;
+  
+    }
+  }
+</style>
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css"></head>
+  <body>
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">QGIS Resource Sharing 0.17.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/icon.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">QGIS Resource Sharing 0.17.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">How to use the plugin</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/installation.html">Installing the plugin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/installing-collection.html">Installing a collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/adding-repository.html">Adding a repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/plugin-configuration.html">Plugin configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/problems_and_solutions.html">Problems and solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Create your own collections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="what-to-share.html">What to share</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Creating a repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repository-structure.html">Repository structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="creating-metadata.html">Creating metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publishing-repository.html">Publishing your repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repository-example.html">Gallery of examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribute to the plugin</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../development/contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/environment.html">Development environment setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/update_dependencies.html">Dependencies upgrade workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/documentation.html">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/release-workflow.html">Release workflow</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <article role="main">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <section class="tex2jax_ignore mathjax_ignore" id="creating-a-repository">
+<h1>Creating a repository<a class="headerlink" href="#creating-a-repository" title="Permalink to this headline">¶</a></h1>
+<section id="preparing-the-repository">
+<h2>Preparing the Repository<a class="headerlink" href="#preparing-the-repository" title="Permalink to this headline">¶</a></h2>
+<p>In order for the tools to parse the repository correctly, the repository must have a certain structure. This is what you need to do:</p>
+<ol class="simple">
+<li><p>Go to <a class="reference internal" href="repository-structure.html"><span class="doc std std-doc">this page</span></a> to get information about the expected structure.</p></li>
+<li><p>Create correct metadata for the repository (consult <a class="reference internal" href="creating-metadata.html"><span class="doc std std-doc">this page</span></a>).</p></li>
+<li><p>When you have prepared your repository, you can check if the repository is all good by trying it using the file system handler.</p></li>
+</ol>
+<p>In the plugin, go to the <code class="docutils literal notranslate"><span class="pre">Settings</span></code> tab and add a new repository pointing to the root of the repository in your local file system. The repository URL looks like this:</p>
+<ul class="simple">
+<li><p>Linux: <code class="docutils literal notranslate"><span class="pre">file:///home/pointing/to/repository_root</span></code></p></li>
+<li><p>Windows: <code class="docutils literal notranslate"><span class="pre">file://C:/home/pointing/to/repository_root</span></code></p></li>
+</ul>
+</section>
+<hr class="docutils"/>
+<section id="where-can-you-share-it">
+<h2>Where can you share it?<a class="headerlink" href="#where-can-you-share-it" title="Permalink to this headline">¶</a></h2>
+<p>These are the options for sharing: on Github, GitLab, Bitbucket (they need to be public repositories), Gogs (<em>Go Git Service</em>), local file system (if you want to share the collections with your colleagues on the network), or in your own server with the HTTP(S) protocol.</p>
+<section id="github-gitlab-and-bitbucket">
+<h3>Github, GitLab and Bitbucket<a class="headerlink" href="#github-gitlab-and-bitbucket" title="Permalink to this headline">¶</a></h3>
+<p>There is nothing complicated here if you are already familiar with git.</p>
+<p>After preparing the repository on your local machine, you can make it into a git repository as usual.
+In general, you can do:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;repository root&gt;
+git init
+git add .
+git commit -m <span class="s2">"Created a cool repository for cool users."</span>
+git remote add origin &lt;remote repository URL&gt;
+git push origin master
+</pre></div>
+</div>
+<p>Note that you currently need to use the <code class="docutils literal notranslate"><span class="pre">master</span></code> branch for your repository.</p>
+</section>
+<section id="local-file-system">
+<h3>Local File System<a class="headerlink" href="#local-file-system" title="Permalink to this headline">¶</a></h3>
+<p>This is even simpler.</p>
+<p>After preparing the repository, you can use it right away.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">Settings</span></code> tab, you add a repository with URL pointing to the repository root in your local machine (absolute path, example: <code class="docutils literal notranslate"><span class="pre">file:/home/user/QGIS-collections/mycollection</span></code>).</p>
+<p>It’s as simple as that.</p>
+<p>If there is a problem with metadata or other issues when adding the
+repository, you will be told.</p>
+</section>
+<section id="your-own-server">
+<h3>Your Own Server<a class="headerlink" href="#your-own-server" title="Permalink to this headline">¶</a></h3>
+<p>This option could be useful in some cases, e.g. if you want to make private collections available for your customers.</p>
+<p>There are some additional requirements that you need to be aware of if you choose this option:</p>
+<ul class="simple">
+<li><p>The URL structure of the repository. If your repository URL is <code class="docutils literal notranslate"><span class="pre">http://www.mydomain.com/qgisrepository/</span></code>, you must make the metadata available on: <code class="docutils literal notranslate"><span class="pre">http://www.mydomain.com/qgisrepository/metadata.ini</span></code></p></li>
+<li><p>Each collection must be zipped. The zip file of a collection must be named <code class="docutils literal notranslate"><span class="pre">&lt;name</span> <span class="pre">of</span> <span class="pre">collection&gt;.zip</span></code>, and the zip shall combine the subdirectories of the collection (one or more of <code class="docutils literal notranslate"><span class="pre">checklists</span></code>, <code class="docutils literal notranslate"><span class="pre">expressions</span></code>, <code class="docutils literal notranslate"><span class="pre">image</span></code>, <code class="docutils literal notranslate"><span class="pre">models</span></code>, <code class="docutils literal notranslate"><span class="pre">processing</span></code>, <code class="docutils literal notranslate"><span class="pre">rscripts</span></code>, <code class="docutils literal notranslate"><span class="pre">svg</span></code> and <code class="docutils literal notranslate"><span class="pre">symbol</span></code>), in addition to a <code class="docutils literal notranslate"><span class="pre">preview</span></code> subdirectory for preview images.</p></li>
+</ul>
+<p>For example, if you have a collection named <code class="docutils literal notranslate"><span class="pre">test_collection</span></code>, the collection must be present as: <code class="docutils literal notranslate"><span class="pre">http://www.mydomain.com/qgisrepository/collections/test_collection.zip</span></code>, and the structure of this zip file must be (only include directories that contain resources you would like to share):</p>
+<div class="highlight-txt notranslate"><div class="highlight"><pre><span></span>test_collection.zip
+├── checklists
+├── expressions
+├── image
+├── models
+├── preview
+├── processing
+├── rscripts
+├── svg
+├── symbol
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Preview images that illustrates the collection should be included. If you define preview images for collection <code class="docutils literal notranslate"><span class="pre">test_collection</span></code> in metadata (<code class="docutils literal notranslate"><span class="pre">preview=preview/prev1.png,prev2.png</span></code>), you have to place these preview images in the zip-file in a separate directory. <code class="docutils literal notranslate"><span class="pre">preview</span></code> is the recommended name for that directory.</p></li>
+</ul>
+<p>An example server directory setup for the repository <code class="docutils literal notranslate"><span class="pre">myfirstrepository</span></code> with one collection (<code class="docutils literal notranslate"><span class="pre">test_collection</span></code>) that contains resources to share in a lot of resource categories:</p>
+<div class="highlight-ascii notranslate"><div class="highlight"><pre><span></span>      qgisrepository
+      ├── metadata.ini
+      └── collections
+          └── test_collection.zip
+              ├── checlists
+              |   ├── checklist1.json
+              |   ├── ...
+              |   └── lastchecklist.json
+              ├── expressions
+              |   ├── expressions1.json
+              |   ├── ...
+              |   └── lastexpressions.json
+              ├── image
+              |   ├── image1.png
+              |   ├── ...
+              |   └── lastimage.png
+              ├── models
+              |   ├── firstmodel.model3
+              |   ├── ...
+              |   └── testmodel.model3
+              ├── preview
+              |   ├── prev1.png
+              |   └── prev2.png
+              ├── processing
+              |   ├── firstscript.py
+              |   ├── ...
+              |   └── testscript.py
+              ├── rscripts
+              |   ├── firstRscript.rsx
+              |   └──firstRscript.rsx.help
+              |   ├── ...
+              |   ├── testRscript.rsx
+              |   └── testRscript.rsx.help
+              ├── style
+              |   ├── firstlayerstyle.qml
+              |   ├── ...
+              |   └── testlayerstyle.qml
+              ├── svg
+              |   ├── firstmodel.model3
+              |   ├── ...
+              |   └── testmodel.model3
+              └── symbol
+                  ├── firststyle.xml
+                  ├── ...
+                  └── teststyle.xml
+
+</pre></div>
+</div>
+<p>The repository URL to be used when adding the repository (in the <em>QGIS Resource Sharing</em> plugin): <code class="docutils literal notranslate"><span class="pre">http://www.mydomain.com/qgisrepository/</span></code>.</p>
+<p>You can also use authentication for this repository.</p>
+<p>Users can configure authentication details in the plugin, so that they will be able to fetch the repository and the collections inside.</p>
+</section>
+</section>
+</section>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="repository-structure.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Repository structure</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="what-to-share.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">What to share</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2016 - 2021, Akbar Gumbira, Håvard Tveite, Julien Moura
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="../_sources/authoring/creating-repository.md.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Creating a repository</a><ul>
+<li><a class="reference internal" href="#preparing-the-repository">Preparing the Repository</a></li>
+<li><a class="reference internal" href="#where-can-you-share-it">Where can you share it?</a><ul>
+<li><a class="reference internal" href="#github-gitlab-and-bitbucket">Github, GitLab and Bitbucket</a></li>
+<li><a class="reference internal" href="#local-file-system">Local File System</a></li>
+<li><a class="reference internal" href="#your-own-server">Your Own Server</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/main.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    </body>
+</html>

@@ -1,0 +1,387 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Problems and solutions" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://qgis-contribution.github.io/QGIS-ResourceSharing/usage/problems_and_solutions.html" />
+  <meta property="og:site_name" content="QGIS Resource Sharing" />
+  <meta property="og:description" content="Polluted SVG search path: If the local collection directories have changed location in the file system, the SVG search path may not have been updated, and the old location will still be included in..." />
+  <meta property="og:image" content="https://qgis-contribution.github.io/QGIS-ResourceSharing/_images/collection_preview.png" />
+  <meta property="og:image:alt" content="QGIS Resource Sharing" />
+  <meta name='twitter:card' content='summary_large_image'>
+<meta property="twitter:description" content="Download shared collections
+Search for published collections and install them for use with QGIS. Symbology (SVG, images, styles), Processing scripts, Processing models, R scripts and checklists are supported. There are several options for repositories: Github, Bitbucket, local file system and HTTP(S)." />
+<meta property="twitter:image" content="https://qgis-contribution.github.io/QGIS-ResourceSharing/_images/collection_preview.png" />
+<meta property="twitter:title" content="QGIS Resource Sharing" /><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="What to share" href="../authoring/what-to-share.html" /><link rel="prev" title="Plugin configuration" href="plugin-configuration.html" />
+
+    <link rel="shortcut icon" href="../_static/icon.png"/><meta name="generator" content="sphinx-4.1.2, furo 2021.07.31.beta41"/>
+        <title>Problems and solutions - QGIS Resource Sharing 0.17.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=daa650a7760fac3eee23aa959745d2c866b74cb3" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=93475b62d1c3bc01323a0eefdc14a62d77b12690" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  body[data-theme="dark"] {
+    --color-code-background: #272822;
+  --color-code-foreground: #f8f8f2;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-code-background: #272822;
+  --color-code-foreground: #f8f8f2;
+  
+    }
+  }
+</style>
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css"></head>
+  <body>
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">QGIS Resource Sharing 0.17.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/icon.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">QGIS Resource Sharing 0.17.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">How to use the plugin</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installing the plugin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installing-collection.html">Installing a collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding-repository.html">Adding a repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugin-configuration.html">Plugin configuration</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Problems and solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Create your own collections</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../authoring/what-to-share.html">What to share</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authoring/creating-repository.html">Creating a repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authoring/repository-structure.html">Repository structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authoring/creating-metadata.html">Creating metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authoring/publishing-repository.html">Publishing your repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authoring/repository-example.html">Gallery of examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribute to the plugin</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../development/contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/environment.html">Development environment setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/update_dependencies.html">Dependencies upgrade workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/documentation.html">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/release-workflow.html">Release workflow</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <article role="main">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <section class="tex2jax_ignore mathjax_ignore" id="problems-and-solutions">
+<h1>Problems and solutions<a class="headerlink" href="#problems-and-solutions" title="Permalink to this headline">¶</a></h1>
+<section id="polluted-svg-search-path">
+<h2>Polluted SVG search path<a class="headerlink" href="#polluted-svg-search-path" title="Permalink to this headline">¶</a></h2>
+<p>If the local collection directories have changed location in the file system, the SVG search path may not have been updated,
+and the old location will still be included in the search path.</p>
+<p>Old locations can be removed from the search path by editing <em>searchPathsForSVG</em> under <code class="docutils literal notranslate"><span class="pre">svg</span></code> in the QGIS settings (<em>Settings-&gt; Options-&gt; Advanced</em>), or in the QGIS3.ini file that is located under <code class="docutils literal notranslate"><span class="pre">QGIS</span></code> in the user QGIS folder.</p>
+</section>
+<hr class="docutils"/>
+<section id="strange-and-or-old-tag-names-in-style-manager">
+<h2>Strange and/or old tag names in Style Manager<a class="headerlink" href="#strange-and-or-old-tag-names-in-style-manager" title="Permalink to this headline">¶</a></h2>
+<p>Earlier versions of the plugin used non-inutitive tag names for grouping symbols, colormaps, labelsettings and textformats in the Style Manager. This has been improved in later versions.</p>
+<p>When a repository is been renamed, new tag names are generated in Style Manager, but the old ones will remain.</p>
+<p>To clean up the “mess”, remove the strange / old tags by right-clicking on the tag name in the left part of the Style Manager dialogue and <em>Remove</em>.</p>
+<p>Reload the collections to get missing style elements from the collections back in the Style Manager.</p>
+</section>
+<hr class="docutils"/>
+<section id="empty-tags-in-style-manager">
+<h2>Empty tags in Style Manager<a class="headerlink" href="#empty-tags-in-style-manager" title="Permalink to this headline">¶</a></h2>
+<p>Earlier versions of the plugin may have introduced tags without associated elements.</p>
+<p>In the Style Manager right-click on the “empty” tag, and <em>Remove</em>.</p>
+</section>
+<hr class="docutils"/>
+<section id="collection-directories-are-not-removed">
+<h2>Collection directories are not removed<a class="headerlink" href="#collection-directories-are-not-removed" title="Permalink to this headline">¶</a></h2>
+<p>If there are subdirectories in the collections directory (<code class="docutils literal notranslate"><span class="pre">/.local/share/QGIS/QGIS3/profiles/default/resource_sharing/collections</span></code>
+on Ubuntu, <code class="docutils literal notranslate"><span class="pre">C:\Users\&lt;user&gt;\AppData\Roaming\QGIS\QGIS3\profiles\default\resource_sharing\collections</span></code>
+on Windows) that do not correspond to installed collections, you can safely remove them.</p>
+</section>
+<hr class="docutils"/>
+<section id="repository-directories-are-not-removed">
+<h2>Repository directories are not removed<a class="headerlink" href="#repository-directories-are-not-removed" title="Permalink to this headline">¶</a></h2>
+<p>If there are subdirectories in the repositories directory (<code class="docutils literal notranslate"><span class="pre">/.local/share/QGIS/QGIS3/profiles/default/resource_sharing/repositories</span></code> on Ubuntu, <code class="docutils literal notranslate"><span class="pre">C:\Users\&lt;user&gt;\AppData\Roaming\QGIS\QGIS3\profiles\default\resource_sharing\repositories</span></code>
+on Windows) that do not correspond to officially approved QGIS repositories, you can safely remove them.</p>
+</section>
+<hr class="docutils"/>
+<section id="starting-with-a-clean-sheet">
+<h2>Starting with a clean sheet<a class="headerlink" href="#starting-with-a-clean-sheet" title="Permalink to this headline">¶</a></h2>
+<p>If everything has turned out to be a mess (might happen after plugin upgrades that adds new “features”), and you would like to remove all installed collections and clean up, you can:</p>
+<ul class="simple">
+<li><p>Remove the <code class="docutils literal notranslate"><span class="pre">resource_sharing</span></code> directory in your QGIS user folder (<code class="docutils literal notranslate"><span class="pre">/.local/share/QGIS/QGIS3/profiles/default/QGIS</span></code> on Ubuntu, <code class="docutils literal notranslate"><span class="pre">C:\Users\&lt;user&gt;\AppData\Roaming\QGIS\QGIS3\profiles\default\QGIS</span></code> on Windows). That will remove the cache, the local copies/clones of the repositories and the local copies of the collections.</p></li>
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">localCollectionDir</span></code> under <code class="docutils literal notranslate"><span class="pre">[ResourceSharing]</span></code> in QGIS settings (<em>Settings-&gt; Options-&gt; Advanced</em>), or in the QGIS3.ini file that is located under QGIS in the user QGIS folder.</p></li>
+<li><p>Remove the <code class="docutils literal notranslate"><span class="pre">repository</span></code> group (the group has one entry for each repository and one entry for the <code class="docutils literal notranslate"><span class="pre">online_directories</span></code>) under <code class="docutils literal notranslate"><span class="pre">[ResourceSharing]</span></code> in QGIS settings (<em>Settings-&gt; Options-&gt; Advanced</em>), or in the QGIS3.ini file that is located under QGIS in the user QGIS folder).</p></li>
+<li><p>If you have used an early version (pre 0.10.0), you may also want to remove the <code class="docutils literal notranslate"><span class="pre">~/QGIS/Resource</span> <span class="pre">Sharing</span></code> directory.</p></li>
+<li><p>Remove all Resource Sharing related directories from the SVG search path by editing <em>searchPathsForSVG</em> under <code class="docutils literal notranslate"><span class="pre">svg</span></code> in QGIS settings (<em>Settings-&gt; Options-&gt; Advanced</em>), or in the QGIS3.ini file that is located under <code class="docutils literal notranslate"><span class="pre">QGIS</span></code> in the user QGIS folder.</p></li>
+<li><p>Reinstall the plugin</p></li>
+</ul>
+</section>
+<hr class="docutils"/>
+<section id="installing-developing-versions">
+<h2>Installing developing versions<a class="headerlink" href="#installing-developing-versions" title="Permalink to this headline">¶</a></h2>
+<p>If you would like to test upcoming features of the plugin, or help fixing bugs, it is possible to download the plugin directly from github.</p>
+<p>The most common would be to download the <em>master</em> branch
+(<em><a class="reference external" href="https://github.com/QGIS-Contribution/QGIS-ResourceSharing/archive/master.zip">https://github.com/QGIS-Contribution/QGIS-ResourceSharing/archive/master.zip</a></em>),
+but all branches can be downloaded.</p>
+<ol>
+<li><p>Start a web browser and open
+<em><a class="reference external" href="https://github.com/QGIS-Contribution/QGIS-ResourceSharing">https://github.com/QGIS-Contribution/QGIS-ResourceSharing</a></em>.</p></li>
+<li><p>Choose the <em>Branch</em> you would like to download, click
+the <em>Clone or download</em> button/pull-down and <em>Download ZIP</em>.</p>
+<p><img alt="Choose branch on github" src="../_images/github-branch.png"/></p>
+<p>Save the ZIP file.</p>
+</li>
+<li><p>Go to the plugin directory (<code class="docutils literal notranslate"><span class="pre">python/plugins</span></code>, in your QGIS user
+directory)</p></li>
+<li><p>Remove the currently installed version of the plugin
+(<code class="docutils literal notranslate"><span class="pre">qgis_resource_sharing</span></code>, if you have installed from the
+official QGIS plugin repository).</p></li>
+<li><p>Unzip the downloaded file in the plugin directory.
+If you downloaded the master branch, the subdirectory with
+the plugin will be named <code class="docutils literal notranslate"><span class="pre">QGIS-ResourceSharing-master</span></code>.
+If you rename the subdirectory to <code class="docutils literal notranslate"><span class="pre">qgis_resource_sharing</span></code>, you
+can start QGIS and run the new version of the plugin.
+If you choose not to rename the directory, you have to go through
+the last two steps.</p></li>
+<li><p>Start QGIS.
+Since the name of the plugin subdirectory of the Resource Sharing
+plugin has changed from <code class="docutils literal notranslate"><span class="pre">qgis_resource_sharing</span></code> to
+<code class="docutils literal notranslate"><span class="pre">QGIS-ResourceSharing-master</span></code> (if you have downloaded the master
+branch), the plugin has become disabled, and the next step will
+be necessary.</p></li>
+<li><p>Open the Plugin Manager and (re)enable the plugin.</p></li>
+</ol>
+</section>
+</section>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../authoring/what-to-share.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">What to share</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="plugin-configuration.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Plugin configuration</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2016 - 2021, Akbar Gumbira, Håvard Tveite, Julien Moura
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="../_sources/usage/problems_and_solutions.md.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Problems and solutions</a><ul>
+<li><a class="reference internal" href="#polluted-svg-search-path">Polluted SVG search path</a></li>
+<li><a class="reference internal" href="#strange-and-or-old-tag-names-in-style-manager">Strange and/or old tag names in Style Manager</a></li>
+<li><a class="reference internal" href="#empty-tags-in-style-manager">Empty tags in Style Manager</a></li>
+<li><a class="reference internal" href="#collection-directories-are-not-removed">Collection directories are not removed</a></li>
+<li><a class="reference internal" href="#repository-directories-are-not-removed">Repository directories are not removed</a></li>
+<li><a class="reference internal" href="#starting-with-a-clean-sheet">Starting with a clean sheet</a></li>
+<li><a class="reference internal" href="#installing-developing-versions">Installing developing versions</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/main.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    </body>
+</html>
