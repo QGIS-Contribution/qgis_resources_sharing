@@ -5,4 +5,4 @@ black
 flake8-builtins>=1.5
 flake8-isort>=6
 flake8-qgis>=1
-pre-commit>=3,<4
+pre-commit>=3,<5
