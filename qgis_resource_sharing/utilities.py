@@ -20,6 +20,7 @@ SUPPORTED_RESOURCES_MAP = {
     "models": "Processing model",
     "rscripts": "R script",
     "checklists": "Dataset QA Workbench checklist",
+    "python_expressions": "Python Expressions",
 }
 
 
